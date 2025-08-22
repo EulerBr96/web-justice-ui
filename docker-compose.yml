@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # Frontend Independente - Web Justice UI
+  web-justice-ui:
+    container_name: web-justice-ui
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      # Para desenvolvimento local, conecta com FastAPI externo
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+      # Para produção, usar domínio específico
+      # - NEXT_PUBLIC_API_URL=https://api.seudominio.com/api
+    volumes:
+      # Apenas para desenvolvimento - comentar em produção
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    restart: unless-stopped
+
+# Configuração para usar rede externa se necessário conectar com backend
+# networks:
+#   web-justice-network:
+#     external: true
