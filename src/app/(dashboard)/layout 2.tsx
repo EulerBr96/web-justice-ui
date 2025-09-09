@@ -55,20 +55,6 @@ export default function DashboardLayout({
             <span className="mr-3">📄</span>
             Extrator de Texto
           </Link>
-          <Link
-            href="/chat"
-            className="block px-6 py-3 text-lg font-medium hover:bg-gray-200"
-          >
-            <span className="mr-3">💬</span>
-            Chat IA
-          </Link>
-          <Link
-            href="/acompanhamento"
-            className="block px-6 py-3 text-lg font-medium hover:bg-gray-200"
-          >
-            <span className="mr-3">📋</span>
-            Acompanhamento
-          </Link>
           {/* Link Condicional para Admin */}
           {user?.role === 'developer' && (
             <Link
@@ -88,10 +74,8 @@ export default function DashboardLayout({
             </button>
         </div>
       </aside>
-      <main className="flex-1 overflow-y-auto">
-        <div className="h-full">
-          {children}
-        </div>
+      <main className="flex-1 overflow-y-auto p-8">
+        {children}
       </main>
     </div>
   );
